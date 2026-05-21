@@ -1,0 +1,460 @@
+[
+  {
+    "icao": "KORD",
+    "iata": "ORD",
+    "name": "Chicago O'Hare International Airport",
+    "aliases": [
+      "KORD",
+      "ORD",
+      "Chicago O'Hare International Airport",
+      "O'Hare",
+      "Ohare",
+      "O Hare",
+      "Chicago O'Hare",
+      "Chicago Ohare",
+      "Chicago O Hare",
+      "O'Hare International",
+      "Chicago O'Hare ",
+      "Chicago O'Hare International "
+    ],
+    "geo": "Midwestern United States",
+    "op": "Large airport with an unusually dense grid of parallel and intersecting runways.",
+    "asset": "assets/KORD.png"
+  },
+  {
+    "icao": "KATL",
+    "iata": "ATL",
+    "name": "Hartsfield-Jackson Atlanta International Airport",
+    "aliases": [
+      "KATL",
+      "ATL",
+      "Hartsfield-Jackson Atlanta International Airport",
+      "Atlanta",
+      "Hartsfield",
+      "Hartsfield Jackson",
+      "Hartsfield-Jackson",
+      "Atlanta Hartsfield",
+      "Hartsfield-Jackson Atlanta ",
+      "Hartsfield-Jackson Atlanta International "
+    ],
+    "geo": "Southeastern United States",
+    "op": "Very large field with long parallel runway groups and a central terminal complex.",
+    "asset": "assets/KATL.png"
+  },
+  {
+    "icao": "KDEN",
+    "iata": "DEN",
+    "name": "Denver International Airport",
+    "aliases": [
+      "KDEN",
+      "DEN",
+      "Denver International Airport",
+      "Denver",
+      "DIA",
+      "Denver International",
+      "Denver ",
+      "Denver International "
+    ],
+    "geo": "High-elevation western United States",
+    "op": "Very large footprint with widely spaced runways and a terminal complex near the center.",
+    "asset": "assets/KDEN.png"
+  },
+  {
+    "icao": "KLAX",
+    "iata": "LAX",
+    "name": "Los Angeles International Airport",
+    "aliases": [
+      "KLAX",
+      "LAX",
+      "Los Angeles International Airport",
+      "Los Angeles",
+      "Los Angeles International",
+      "LA International",
+      "Los Angeles ",
+      "Los Angeles International "
+    ],
+    "geo": "Southern California coast",
+    "op": "Compact coastal field with parallel runway groups on both sides of the terminal area.",
+    "asset": "assets/KLAX.png"
+  },
+  {
+    "icao": "KJFK",
+    "iata": "JFK",
+    "name": "John F. Kennedy International Airport",
+    "aliases": [
+      "KJFK",
+      "JFK",
+      "John F. Kennedy International Airport",
+      "Kennedy",
+      "John F Kennedy",
+      "John F. Kennedy",
+      "New York JFK",
+      "JFK Airport",
+      "John F. Kennedy ",
+      "John F. Kennedy International "
+    ],
+    "geo": "Northeastern United States",
+    "op": "Coastal airport with a triangular runway/taxiway feel and terminal cluster near the center.",
+    "asset": "assets/KJFK.png"
+  },
+  {
+    "icao": "KSFO",
+    "iata": "SFO",
+    "name": "San Francisco International Airport",
+    "aliases": [
+      "KSFO",
+      "SFO",
+      "San Francisco International Airport",
+      "San Francisco",
+      "San Francisco International",
+      "San Francisco ",
+      "San Francisco International "
+    ],
+    "geo": "Northern California coast",
+    "op": "Water-adjacent airport with closely paired parallel runway geometry.",
+    "asset": "assets/KSFO.png"
+  },
+  {
+    "icao": "KEWR",
+    "iata": "EWR",
+    "name": "Newark Liberty International Airport",
+    "aliases": [
+      "KEWR",
+      "EWR",
+      "Newark Liberty International Airport",
+      "Newark",
+      "Newark Liberty",
+      "Newark International",
+      "Newark Liberty International",
+      "Newark Liberty ",
+      "Newark Liberty International "
+    ],
+    "geo": "Northeastern United States",
+    "op": "Urban airport with a compact terminal complex and dense taxiway grid.",
+    "asset": "assets/KEWR.png"
+  },
+  {
+    "icao": "KIAH",
+    "iata": "IAH",
+    "name": "George Bush Intercontinental Airport",
+    "aliases": [
+      "KIAH",
+      "IAH",
+      "George Bush Intercontinental Airport",
+      "Houston",
+      "Houston Intercontinental",
+      "George Bush Intercontinental",
+      "Bush Intercontinental",
+      "George Bush Intercontinental "
+    ],
+    "geo": "South-central United States",
+    "op": "Large field with long parallel runways and a central terminal line.",
+    "asset": "assets/KIAH.png"
+  },
+  {
+    "icao": "KLAS",
+    "iata": "LAS",
+    "name": "Harry Reid International Airport",
+    "aliases": [
+      "KLAS",
+      "LAS",
+      "Harry Reid International Airport",
+      "Las Vegas",
+      "Vegas",
+      "Harry Reid",
+      "McCarran",
+      "Las Vegas International",
+      "Harry Reid ",
+      "Harry Reid International "
+    ],
+    "geo": "Desert Southwest United States",
+    "op": "Compact desert airport with crossed runway groups close to the terminal area.",
+    "asset": "assets/KLAS.png"
+  },
+  {
+    "icao": "KSEA",
+    "iata": "SEA",
+    "name": "Seattle-Tacoma International Airport",
+    "aliases": [
+      "KSEA",
+      "SEA",
+      "Seattle-Tacoma International Airport",
+      "Seattle",
+      "Seattle Tacoma",
+      "SeaTac",
+      "Sea Tac",
+      "Seattle-Tacoma",
+      "Seattle-Tacoma ",
+      "Seattle-Tacoma International "
+    ],
+    "geo": "Pacific Northwest United States",
+    "op": "Long north-south runway layout with terminals tucked to one side.",
+    "asset": "assets/KSEA.png"
+  },
+  {
+    "icao": "KMCO",
+    "iata": "MCO",
+    "name": "Orlando International Airport",
+    "aliases": [
+      "KMCO",
+      "MCO",
+      "Orlando International Airport",
+      "Orlando",
+      "Orlando International",
+      "Orlando ",
+      "Orlando International "
+    ],
+    "geo": "Central Florida",
+    "op": "Symmetrical terminal layout with multiple long runway corridors.",
+    "asset": "assets/KMCO.png"
+  },
+  {
+    "icao": "KMIA",
+    "iata": "MIA",
+    "name": "Miami International Airport",
+    "aliases": [
+      "KMIA",
+      "MIA",
+      "Miami International Airport",
+      "Miami",
+      "Miami International",
+      "Miami ",
+      "Miami International "
+    ],
+    "geo": "South Florida",
+    "op": "Dense taxiway network with terminals stretched along one side of the field.",
+    "asset": "assets/KMIA.png"
+  },
+  {
+    "icao": "KCLT",
+    "iata": "CLT",
+    "name": "Charlotte Douglas International Airport",
+    "aliases": [
+      "KCLT",
+      "CLT",
+      "Charlotte Douglas International Airport",
+      "Charlotte",
+      "Charlotte Douglas",
+      "Charlotte Douglas International",
+      "Charlotte Douglas ",
+      "Charlotte Douglas International "
+    ],
+    "geo": "Southeastern United States",
+    "op": "Parallel runway layout with a distinctive midfield terminal complex.",
+    "asset": "assets/KCLT.png"
+  },
+  {
+    "icao": "KLGA",
+    "iata": "LGA",
+    "name": "LaGuardia Airport",
+    "aliases": [
+      "KLGA",
+      "LGA",
+      "LaGuardia Airport",
+      "LaGuardia",
+      "La Guardia",
+      "New York LaGuardia",
+      "LaGuardia "
+    ],
+    "geo": "Northeastern United States",
+    "op": "Compact water-adjacent airport with intersecting runways and tight terminal geometry.",
+    "asset": "assets/KLGA.png"
+  },
+  {
+    "icao": "EGLL",
+    "iata": "LHR",
+    "name": "London Heathrow Airport",
+    "aliases": [
+      "EGLL",
+      "LHR",
+      "London Heathrow Airport",
+      "Heathrow",
+      "London Heathrow",
+      "London Heathrow "
+    ],
+    "geo": "Western Europe",
+    "op": "Two long parallel runways with large terminal complexes between them.",
+    "asset": "assets/EGLL.png"
+  },
+  {
+    "icao": "EHAM",
+    "iata": "AMS",
+    "name": "Amsterdam Airport Schiphol",
+    "aliases": [
+      "EHAM",
+      "AMS",
+      "Amsterdam Airport Schiphol",
+      "Amsterdam",
+      "Schiphol",
+      "Amsterdam Schiphol",
+      "Amsterdam  Schiphol"
+    ],
+    "geo": "Western Europe",
+    "op": "Large airport with runways spread across a wide footprint around a central terminal area.",
+    "asset": "assets/EHAM.png"
+  },
+  {
+    "icao": "KBOS",
+    "iata": "BOS",
+    "name": "Boston Logan International Airport",
+    "aliases": [
+      "KBOS",
+      "BOS",
+      "Boston Logan International Airport",
+      "Boston",
+      "Logan",
+      "Boston Logan",
+      "Boston Logan International",
+      "Boston Logan Airport",
+      "Boston Logan ",
+      "Boston Logan International "
+    ],
+    "geo": "Northeastern United States",
+    "op": "Coastal airport with multiple intersecting runways and compact terminal geometry.",
+    "asset": "assets/KBOS.png"
+  },
+  {
+    "icao": "LFPG",
+    "iata": "CDG",
+    "name": "Paris Charles de Gaulle Airport",
+    "aliases": [
+      "LFPG",
+      "CDG",
+      "Paris Charles de Gaulle Airport",
+      "Paris",
+      "Charles de Gaulle",
+      "Paris Charles de Gaulle",
+      "De Gaulle",
+      "Roissy",
+      "Roissy Charles de Gaulle",
+      "Paris Charles de Gaulle "
+    ],
+    "geo": "Western Europe",
+    "op": "Large airport with multiple runway pairs and a central terminal complex.",
+    "asset": "assets/LFPG.png"
+  },
+  {
+    "icao": "EDDF",
+    "iata": "FRA",
+    "name": "Frankfurt Airport",
+    "aliases": [
+      "EDDF",
+      "FRA",
+      "Frankfurt Airport",
+      "Frankfurt",
+      "Frankfurt am Main",
+      "Frankfurt "
+    ],
+    "geo": "Western Europe",
+    "op": "Large forest-adjacent field with several long parallel and offset runway elements.",
+    "asset": "assets/EDDF.png"
+  },
+  {
+    "icao": "RJTT",
+    "iata": "HND",
+    "name": "Tokyo Haneda Airport",
+    "aliases": [
+      "RJTT",
+      "HND",
+      "Tokyo Haneda Airport",
+      "Haneda",
+      "Tokyo Haneda",
+      "Tokyo International",
+      "Tokyo Haneda "
+    ],
+    "geo": "East Asia",
+    "op": "Waterfront airport with a compact central island-like airfield and separated runway sections.",
+    "asset": "assets/RJTT.png"
+  },
+  {
+    "icao": "RJAA",
+    "iata": "NRT",
+    "name": "Narita International Airport",
+    "aliases": [
+      "RJAA",
+      "NRT",
+      "Narita International Airport",
+      "Narita",
+      "Tokyo Narita",
+      "Narita International",
+      "Narita ",
+      "Narita International "
+    ],
+    "geo": "East Asia",
+    "op": "Long runway layout set away from dense city core with large terminal areas in the middle.",
+    "asset": "assets/RJAA.png"
+  },
+  {
+    "icao": "VHHH",
+    "iata": "HKG",
+    "name": "Hong Kong International Airport",
+    "aliases": [
+      "VHHH",
+      "HKG",
+      "Hong Kong International Airport",
+      "Hong Kong",
+      "Hong Kong International",
+      "Chek Lap Kok",
+      "Chek Lap Kok Airport",
+      "Hong Kong ",
+      "Hong Kong International "
+    ],
+    "geo": "East Asia",
+    "op": "Island airport layout with long parallel runway geometry.",
+    "asset": "assets/VHHH.png"
+  },
+  {
+    "icao": "OMDB",
+    "iata": "DXB",
+    "name": "Dubai International Airport",
+    "aliases": [
+      "OMDB",
+      "DXB",
+      "Dubai International Airport",
+      "Dubai",
+      "Dubai International",
+      "Dubai Airport",
+      "Dubai ",
+      "Dubai International "
+    ],
+    "geo": "Middle East",
+    "op": "Dense urban airport with long parallel runway alignment and large terminal concourses.",
+    "asset": "assets/OMDB.png"
+  },
+  {
+    "icao": "WSSS",
+    "iata": "SIN",
+    "name": "Singapore Changi Airport",
+    "aliases": [
+      "WSSS",
+      "SIN",
+      "Singapore Changi Airport",
+      "Singapore",
+      "Changi",
+      "Singapore Changi",
+      "Changi Airport",
+      "Singapore Changi "
+    ],
+    "geo": "Southeast Asia",
+    "op": "Coastal airport with multiple long parallel runways and large terminal zones.",
+    "asset": "assets/WSSS.png"
+  },
+  {
+    "icao": "YSSY",
+    "iata": "SYD",
+    "name": "Sydney Kingsford Smith Airport",
+    "aliases": [
+      "YSSY",
+      "SYD",
+      "Sydney Kingsford Smith Airport",
+      "Sydney",
+      "Sydney Kingsford Smith",
+      "Kingsford Smith",
+      "Sydney Airport",
+      "Sydney Kingsford Smith "
+    ],
+    "geo": "Australia",
+    "op": "Waterfront airport with intersecting runway geometry on a peninsula-like footprint.",
+    "asset": "assets/YSSY.png"
+  }
+]

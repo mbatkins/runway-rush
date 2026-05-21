@@ -1,0 +1,385 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Runway Rush MVP</title>
+<style>
+:root {
+  --navy:#08182f;
+  --navy-deep:#04101f;
+  --card:#102542;
+  --card2:#132d4e;
+  --line:rgba(255,255,255,.12);
+  --text:#f4f8ff;
+  --muted:#c7d5e8;
+  --accent:#ffffff;
+  --bad:#ffdee3;
+  --good:#ddffea;
+}
+* { box-sizing:border-box; }
+body {
+  margin:0;
+  min-height:100vh;
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  color:var(--text);
+  background:
+    radial-gradient(circle at top left, rgba(64,118,174,.32), transparent 36%),
+    radial-gradient(circle at top right, rgba(84,139,195,.18), transparent 28%),
+    linear-gradient(180deg, #0d2745 0%, var(--navy) 44%, var(--navy-deep) 100%);
+  display:flex;
+  justify-content:center;
+}
+.wrap {
+  width:100%;
+  max-width:680px;
+  padding:26px 20px 44px;
+}
+.kicker {
+  color:var(--muted);
+  letter-spacing:4px;
+  font-weight:900;
+  font-size:13px;
+  margin-bottom:16px;
+}
+h1 {
+  margin:0;
+  font-size:48px;
+  letter-spacing:2px;
+  line-height:.95;
+}
+h2 {
+  margin:14px 0 24px;
+  color:#e8f1ff;
+  line-height:1.25;
+  font-size:24px;
+  font-weight:800;
+}
+p {
+  color:var(--muted);
+  line-height:1.5;
+}
+.card {
+  background:rgba(16,37,66,.90);
+  border:1px solid var(--line);
+  border-radius:28px;
+  padding:24px;
+  box-shadow:0 24px 70px rgba(0,0,0,.34);
+}
+.visual {
+  background:#08182f;
+  border:1px solid var(--line);
+  border-radius:24px;
+  overflow:hidden;
+  min-height:360px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+.visual img {
+  width:100%;
+  display:block;
+}
+button {
+  width:100%;
+  margin-top:14px;
+  padding:17px 18px;
+  border:0;
+  border-radius:18px;
+  background:white;
+  color:#08182f;
+  font-size:16px;
+  font-weight:950;
+  letter-spacing:.4px;
+  cursor:pointer;
+}
+button.secondary {
+  background:#1e3d66;
+  color:white;
+  border:1px solid rgba(255,255,255,.14);
+}
+button:active {
+  transform:translateY(1px);
+}
+input {
+  width:100%;
+  margin-top:18px;
+  padding:18px;
+  border:0;
+  border-radius:18px;
+  font-size:18px;
+  outline:none;
+}
+.topbar {
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:14px;
+  font-weight:950;
+  letter-spacing:1.3px;
+  color:#d5e2f5;
+}
+.progress {
+  margin:10px 0 16px;
+  height:8px;
+  border-radius:999px;
+  background:rgba(255,255,255,.10);
+  overflow:hidden;
+}
+.progress > div {
+  width:0%;
+  height:100%;
+  background:white;
+  border-radius:999px;
+  transition:width .25s ease;
+}
+.clue {
+  margin-top:14px;
+  padding:14px 15px;
+  background:#183a63;
+  border:1px solid rgba(255,255,255,.13);
+  border-radius:16px;
+  color:#e9f2ff;
+  font-weight:800;
+  line-height:1.35;
+}
+.feedback {
+  margin-top:14px;
+  padding:13px 15px;
+  border-radius:16px;
+  font-weight:900;
+  line-height:1.3;
+}
+.feedback.good { background:var(--good); color:#073b23; }
+.feedback.bad { background:var(--bad); color:#7d1018; }
+.hidden { display:none !important; }
+.note {
+  margin-top:18px;
+  text-align:center;
+  color:var(--muted);
+  font-size:13px;
+  line-height:1.45;
+}
+.answer {
+  color:#fff;
+  font-weight:950;
+}
+.emoji {
+  font-size:30px;
+  line-height:1.35;
+  word-break:break-word;
+  margin:18px 0;
+}
+.small {
+  font-size:13px;
+  color:var(--muted);
+  margin-top:10px;
+}
+@media (max-width:520px) {
+  .wrap { padding:18px 14px 34px; }
+  h1 { font-size:40px; }
+  h2 { font-size:21px; }
+  .card { padding:18px; border-radius:24px; }
+  .visual { min-height:300px; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <section id="home">
+    <div class="kicker">DAILY PILOT STREAK CHALLENGE</div>
+    <h1>RUNWAY RUSH</h1>
+    <h2>How many airports can you identify before your first miss?</h2>
+    <div class="card">
+      <div class="visual"><img src="assets/KBOS.png" alt="Airport silhouette preview"></div>
+      <button onclick="startGame()">PLAY TODAY</button>
+      <p class="note">Freeform guesses. Airport codes and common names count. Everyone gets the same randomized daily order.</p>
+    </div>
+  </section>
+
+  <section id="game" class="hidden">
+    <div class="kicker">RUNWAY RUSH</div>
+    <div class="topbar">
+      <span>STREAK <span id="streak">0</span></span>
+      <span>MISS <span id="misses">0</span>/3</span>
+    </div>
+    <div class="progress"><div id="bar"></div></div>
+    <div class="card">
+      <div class="visual"><img id="airportImg" src="" alt="Airport silhouette"></div>
+      <input id="guessInput" autocomplete="off" autocapitalize="characters" placeholder="Enter airport name or code" onkeydown="if(event.key==='Enter') submitGuess()">
+      <button onclick="submitGuess()">SUBMIT GUESS</button>
+      <div id="clue" class="clue hidden"></div>
+      <div id="feedback" class="feedback hidden"></div>
+      <button id="skipBtn" class="secondary hidden" onclick="endGame()">END RUN</button>
+    </div>
+    <div class="note">Miss once to reveal a geography clue. Miss twice to reveal an operational/physical clue. Miss three times and your daily streak ends.</div>
+  </section>
+
+  <section id="over" class="hidden">
+    <div class="kicker">RUN COMPLETE</div>
+    <div class="card">
+      <h1>GAME OVER</h1>
+      <h2>Daily Streak: <span id="finalStreak">0</span></h2>
+      <div id="emojiLine" class="emoji"></div>
+      <p>You missed: <span id="missedAirport" class="answer"></span></p>
+      <button onclick="shareScore()">SHARE SCORE</button>
+      <button class="secondary" onclick="resetGame()">PLAY AGAIN</button>
+      <div class="small">In production, repeat attempts would be locked after the first official daily run.</div>
+    </div>
+  </section>
+</div>
+
+<script>
+const AIRPORTS = [{"icao": "KORD", "iata": "ORD", "name": "Chicago O'Hare International Airport", "aliases": ["KORD", "ORD", "Chicago O'Hare International Airport", "O'Hare", "Ohare", "O Hare", "Chicago O'Hare", "Chicago Ohare", "Chicago O Hare", "O'Hare International", "Chicago O'Hare ", "Chicago O'Hare International "], "geo": "Midwestern United States", "op": "Large airport with an unusually dense grid of parallel and intersecting runways.", "asset": "assets/KORD.png"}, {"icao": "KATL", "iata": "ATL", "name": "Hartsfield-Jackson Atlanta International Airport", "aliases": ["KATL", "ATL", "Hartsfield-Jackson Atlanta International Airport", "Atlanta", "Hartsfield", "Hartsfield Jackson", "Hartsfield-Jackson", "Atlanta Hartsfield", "Hartsfield-Jackson Atlanta ", "Hartsfield-Jackson Atlanta International "], "geo": "Southeastern United States", "op": "Very large field with long parallel runway groups and a central terminal complex.", "asset": "assets/KATL.png"}, {"icao": "KDEN", "iata": "DEN", "name": "Denver International Airport", "aliases": ["KDEN", "DEN", "Denver International Airport", "Denver", "DIA", "Denver International", "Denver ", "Denver International "], "geo": "High-elevation western United States", "op": "Very large footprint with widely spaced runways and a terminal complex near the center.", "asset": "assets/KDEN.png"}, {"icao": "KLAX", "iata": "LAX", "name": "Los Angeles International Airport", "aliases": ["KLAX", "LAX", "Los Angeles International Airport", "Los Angeles", "Los Angeles International", "LA International", "Los Angeles ", "Los Angeles International "], "geo": "Southern California coast", "op": "Compact coastal field with parallel runway groups on both sides of the terminal area.", "asset": "assets/KLAX.png"}, {"icao": "KJFK", "iata": "JFK", "name": "John F. Kennedy International Airport", "aliases": ["KJFK", "JFK", "John F. Kennedy International Airport", "Kennedy", "John F Kennedy", "John F. Kennedy", "New York JFK", "JFK Airport", "John F. Kennedy ", "John F. Kennedy International "], "geo": "Northeastern United States", "op": "Coastal airport with a triangular runway/taxiway feel and terminal cluster near the center.", "asset": "assets/KJFK.png"}, {"icao": "KSFO", "iata": "SFO", "name": "San Francisco International Airport", "aliases": ["KSFO", "SFO", "San Francisco International Airport", "San Francisco", "San Francisco International", "San Francisco ", "San Francisco International "], "geo": "Northern California coast", "op": "Water-adjacent airport with closely paired parallel runway geometry.", "asset": "assets/KSFO.png"}, {"icao": "KEWR", "iata": "EWR", "name": "Newark Liberty International Airport", "aliases": ["KEWR", "EWR", "Newark Liberty International Airport", "Newark", "Newark Liberty", "Newark International", "Newark Liberty International", "Newark Liberty ", "Newark Liberty International "], "geo": "Northeastern United States", "op": "Urban airport with a compact terminal complex and dense taxiway grid.", "asset": "assets/KEWR.png"}, {"icao": "KIAH", "iata": "IAH", "name": "George Bush Intercontinental Airport", "aliases": ["KIAH", "IAH", "George Bush Intercontinental Airport", "Houston", "Houston Intercontinental", "George Bush Intercontinental", "Bush Intercontinental", "George Bush Intercontinental "], "geo": "South-central United States", "op": "Large field with long parallel runways and a central terminal line.", "asset": "assets/KIAH.png"}, {"icao": "KLAS", "iata": "LAS", "name": "Harry Reid International Airport", "aliases": ["KLAS", "LAS", "Harry Reid International Airport", "Las Vegas", "Vegas", "Harry Reid", "McCarran", "Las Vegas International", "Harry Reid ", "Harry Reid International "], "geo": "Desert Southwest United States", "op": "Compact desert airport with crossed runway groups close to the terminal area.", "asset": "assets/KLAS.png"}, {"icao": "KSEA", "iata": "SEA", "name": "Seattle-Tacoma International Airport", "aliases": ["KSEA", "SEA", "Seattle-Tacoma International Airport", "Seattle", "Seattle Tacoma", "SeaTac", "Sea Tac", "Seattle-Tacoma", "Seattle-Tacoma ", "Seattle-Tacoma International "], "geo": "Pacific Northwest United States", "op": "Long north-south runway layout with terminals tucked to one side.", "asset": "assets/KSEA.png"}, {"icao": "KMCO", "iata": "MCO", "name": "Orlando International Airport", "aliases": ["KMCO", "MCO", "Orlando International Airport", "Orlando", "Orlando International", "Orlando ", "Orlando International "], "geo": "Central Florida", "op": "Symmetrical terminal layout with multiple long runway corridors.", "asset": "assets/KMCO.png"}, {"icao": "KMIA", "iata": "MIA", "name": "Miami International Airport", "aliases": ["KMIA", "MIA", "Miami International Airport", "Miami", "Miami International", "Miami ", "Miami International "], "geo": "South Florida", "op": "Dense taxiway network with terminals stretched along one side of the field.", "asset": "assets/KMIA.png"}, {"icao": "KCLT", "iata": "CLT", "name": "Charlotte Douglas International Airport", "aliases": ["KCLT", "CLT", "Charlotte Douglas International Airport", "Charlotte", "Charlotte Douglas", "Charlotte Douglas International", "Charlotte Douglas ", "Charlotte Douglas International "], "geo": "Southeastern United States", "op": "Parallel runway layout with a distinctive midfield terminal complex.", "asset": "assets/KCLT.png"}, {"icao": "KLGA", "iata": "LGA", "name": "LaGuardia Airport", "aliases": ["KLGA", "LGA", "LaGuardia Airport", "LaGuardia", "La Guardia", "New York LaGuardia", "LaGuardia "], "geo": "Northeastern United States", "op": "Compact water-adjacent airport with intersecting runways and tight terminal geometry.", "asset": "assets/KLGA.png"}, {"icao": "EGLL", "iata": "LHR", "name": "London Heathrow Airport", "aliases": ["EGLL", "LHR", "London Heathrow Airport", "Heathrow", "London Heathrow", "London Heathrow "], "geo": "Western Europe", "op": "Two long parallel runways with large terminal complexes between them.", "asset": "assets/EGLL.png"}, {"icao": "EHAM", "iata": "AMS", "name": "Amsterdam Airport Schiphol", "aliases": ["EHAM", "AMS", "Amsterdam Airport Schiphol", "Amsterdam", "Schiphol", "Amsterdam Schiphol", "Amsterdam  Schiphol"], "geo": "Western Europe", "op": "Large airport with runways spread across a wide footprint around a central terminal area.", "asset": "assets/EHAM.png"}, {"icao": "KBOS", "iata": "BOS", "name": "Boston Logan International Airport", "aliases": ["KBOS", "BOS", "Boston Logan International Airport", "Boston", "Logan", "Boston Logan", "Boston Logan International", "Boston Logan Airport", "Boston Logan ", "Boston Logan International "], "geo": "Northeastern United States", "op": "Coastal airport with multiple intersecting runways and compact terminal geometry.", "asset": "assets/KBOS.png"}, {"icao": "LFPG", "iata": "CDG", "name": "Paris Charles de Gaulle Airport", "aliases": ["LFPG", "CDG", "Paris Charles de Gaulle Airport", "Paris", "Charles de Gaulle", "Paris Charles de Gaulle", "De Gaulle", "Roissy", "Roissy Charles de Gaulle", "Paris Charles de Gaulle "], "geo": "Western Europe", "op": "Large airport with multiple runway pairs and a central terminal complex.", "asset": "assets/LFPG.png"}, {"icao": "EDDF", "iata": "FRA", "name": "Frankfurt Airport", "aliases": ["EDDF", "FRA", "Frankfurt Airport", "Frankfurt", "Frankfurt am Main", "Frankfurt "], "geo": "Western Europe", "op": "Large forest-adjacent field with several long parallel and offset runway elements.", "asset": "assets/EDDF.png"}, {"icao": "RJTT", "iata": "HND", "name": "Tokyo Haneda Airport", "aliases": ["RJTT", "HND", "Tokyo Haneda Airport", "Haneda", "Tokyo Haneda", "Tokyo International", "Tokyo Haneda "], "geo": "East Asia", "op": "Waterfront airport with a compact central island-like airfield and separated runway sections.", "asset": "assets/RJTT.png"}, {"icao": "RJAA", "iata": "NRT", "name": "Narita International Airport", "aliases": ["RJAA", "NRT", "Narita International Airport", "Narita", "Tokyo Narita", "Narita International", "Narita ", "Narita International "], "geo": "East Asia", "op": "Long runway layout set away from dense city core with large terminal areas in the middle.", "asset": "assets/RJAA.png"}, {"icao": "VHHH", "iata": "HKG", "name": "Hong Kong International Airport", "aliases": ["VHHH", "HKG", "Hong Kong International Airport", "Hong Kong", "Hong Kong International", "Chek Lap Kok", "Chek Lap Kok Airport", "Hong Kong ", "Hong Kong International "], "geo": "East Asia", "op": "Island airport layout with long parallel runway geometry.", "asset": "assets/VHHH.png"}, {"icao": "OMDB", "iata": "DXB", "name": "Dubai International Airport", "aliases": ["OMDB", "DXB", "Dubai International Airport", "Dubai", "Dubai International", "Dubai Airport", "Dubai ", "Dubai International "], "geo": "Middle East", "op": "Dense urban airport with long parallel runway alignment and large terminal concourses.", "asset": "assets/OMDB.png"}, {"icao": "WSSS", "iata": "SIN", "name": "Singapore Changi Airport", "aliases": ["WSSS", "SIN", "Singapore Changi Airport", "Singapore", "Changi", "Singapore Changi", "Changi Airport", "Singapore Changi "], "geo": "Southeast Asia", "op": "Coastal airport with multiple long parallel runways and large terminal zones.", "asset": "assets/WSSS.png"}, {"icao": "YSSY", "iata": "SYD", "name": "Sydney Kingsford Smith Airport", "aliases": ["YSSY", "SYD", "Sydney Kingsford Smith Airport", "Sydney", "Sydney Kingsford Smith", "Kingsford Smith", "Sydney Airport", "Sydney Kingsford Smith "], "geo": "Australia", "op": "Waterfront airport with intersecting runway geometry on a peninsula-like footprint.", "asset": "assets/YSSY.png"}];
+
+let deck = [];
+let currentIndex = 0;
+let streak = 0;
+let misses = 0;
+let result = [];
+let currentAirport = null;
+
+function normalize(text) {
+  return String(text || "")
+    .toLowerCase()
+    .replace(/international airport/g, "")
+    .replace(/intl airport/g, "")
+    .replace(/airport/g, "")
+    .replace(/john f\.? kennedy/g, "jfk")
+    .replace(/hartsfield jackson/g, "hartsfieldjackson")
+    .replace(/[^a-z0-9]/g, "")
+    .trim();
+}
+
+function todaySeed() {
+  const d = new Date();
+  const y = d.getFullYear();
+  const m = String(d.getMonth()+1).padStart(2,'0');
+  const day = String(d.getDate()).padStart(2,'0');
+  return `RUNWAY-RUSH-${y}-${m}-${day}`;
+}
+
+function hashSeed(seed) {
+  let h = 2166136261;
+  for (let i=0; i<seed.length; i++) {
+    h ^= seed.charCodeAt(i);
+    h = Math.imul(h, 16777619);
+  }
+  return h >>> 0;
+}
+
+function seededShuffle(arr, seed) {
+  const a = [...arr];
+  let x = hashSeed(seed);
+  for (let i=a.length-1; i>0; i--) {
+    x = (Math.imul(1664525, x) + 1013904223) >>> 0;
+    const j = x % (i+1);
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
+}
+
+function startGame() {
+  deck = seededShuffle(AIRPORTS, todaySeed());
+  currentIndex = 0;
+  streak = 0;
+  misses = 0;
+  result = [];
+  document.getElementById("home").classList.add("hidden");
+  document.getElementById("over").classList.add("hidden");
+  document.getElementById("game").classList.remove("hidden");
+  updateStats();
+  loadCurrentAirport();
+}
+
+function loadCurrentAirport() {
+  currentAirport = deck[currentIndex % deck.length];
+  misses = 0;
+  document.getElementById("airportImg").src = currentAirport.asset;
+  document.getElementById("guessInput").value = "";
+  document.getElementById("clue").classList.add("hidden");
+  document.getElementById("feedback").classList.add("hidden");
+  document.getElementById("skipBtn").classList.add("hidden");
+  updateStats();
+  setTimeout(()=>document.getElementById("guessInput").focus(), 50);
+}
+
+function updateStats() {
+  document.getElementById("streak").textContent = streak;
+  document.getElementById("misses").textContent = misses;
+  document.getElementById("bar").style.width = Math.min(100, (streak / AIRPORTS.length) * 100) + "%";
+}
+
+function isCorrectGuess(rawGuess, airport) {
+  const g = normalize(rawGuess);
+  if (!g) return false;
+  return airport.aliases.some(alias => normalize(alias) === g);
+}
+
+function submitGuess() {
+  const input = document.getElementById("guessInput");
+  const guess = input.value;
+  const clue = document.getElementById("clue");
+  const feedback = document.getElementById("feedback");
+
+  if (!guess.trim()) return;
+
+  feedback.className = "feedback hidden";
+  feedback.textContent = "";
+
+  if (isCorrectGuess(guess, currentAirport)) {
+    streak++;
+    result.push("🟩");
+    currentIndex++;
+    feedback.className = "feedback good";
+    feedback.textContent = "Correct.";
+    updateStats();
+    setTimeout(loadCurrentAirport, 550);
+    return;
+  }
+
+  misses++;
+  updateStats();
+
+  if (misses === 1) {
+    clue.textContent = "Clue 1: " + currentAirport.geo;
+    clue.classList.remove("hidden");
+    feedback.className = "feedback bad";
+    feedback.textContent = "Not quite. Geography clue unlocked.";
+  } else if (misses === 2) {
+    clue.textContent = "Clue 2: " + currentAirport.op;
+    feedback.className = "feedback bad";
+    feedback.textContent = "Last chance.";
+  } else {
+    result.push("🟥");
+    endGame();
+  }
+  input.value = "";
+  input.focus();
+}
+
+function endGame() {
+  document.getElementById("game").classList.add("hidden");
+  document.getElementById("over").classList.remove("hidden");
+  document.getElementById("finalStreak").textContent = streak;
+  document.getElementById("emojiLine").textContent = result.join("");
+  document.getElementById("missedAirport").textContent = currentAirport ? `${currentAirport.iata} / ${currentAirport.name}` : "";
+}
+
+function resetGame() {
+  startGame();
+}
+
+function shareScore() {
+  const txt = `✈️ RUNWAY RUSH\nDaily Streak: ${streak}\n${result.join("")}\nCan you beat me?`;
+  if (navigator.share) {
+    navigator.share({ text: txt }).catch(()=>{});
+  } else if (navigator.clipboard) {
+    navigator.clipboard.writeText(txt).then(()=>alert("Score copied to clipboard."));
+  } else {
+    alert(txt);
+  }
+}
+</script>
+</body>
+</html>
